@@ -43,6 +43,7 @@ const useMarketingData = (): {
       if (!structuredData[country_code]) structuredData[country_code] = [];
       structuredData[country_code].push(data);
     });
+
     Object.entries(structuredData).forEach(([country_code, dataSet]) => {
       structuredData[country_code] = dataSet.sort((a, b) =>
         new Date(a.month) < new Date(b.month) ? -1 : 1
