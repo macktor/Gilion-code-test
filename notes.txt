@@ -11,3 +11,4 @@ Stacked barcharts for overall
 visualize every country with line
 toggle between spent / gained
 
+piecharts to visualize each month
