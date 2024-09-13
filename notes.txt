@@ -1,0 +1,13 @@
+overall 
+grouped by country
+
+gained/Spent
+
+
+
+
+Stacked barcharts for overall
+
+visualize every country with line
+toggle between spent / gained
+
