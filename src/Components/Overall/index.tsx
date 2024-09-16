@@ -9,12 +9,13 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
-import { NumericData, useDataContext } from "../context/DataContext";
+import { NumericData, useDataContext } from "../../context/DataContext";
 import { useMemo } from "react";
-import { Colors } from "../constants";
-import { cleanName, formatCountry } from "../utils";
-import HideProjected from "./HideProjected";
+import { Colors } from "../../constants";
+import { cleanName, formatCountry } from "../../utils";
+import "./Overall.css";
 
+ChartJS.defaults.color = "white";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -54,6 +55,7 @@ const OverallGraph = ({ valueToShow }: { valueToShow: NumericData }) => {
       },
     },
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
       x: {
         stacked: true,
@@ -65,16 +67,18 @@ const OverallGraph = ({ valueToShow }: { valueToShow: NumericData }) => {
   };
 
   return (
-    <Bar
-      data={{ labels: dates, datasets: refinedData }}
-      options={chartOptions}
-    ></Bar>
+    <div className="chart-wrapper">
+      <Bar
+        data={{ labels: dates, datasets: refinedData }}
+        options={chartOptions}
+      ></Bar>
+    </div>
   );
 };
 
 export default function Overall() {
   return (
-    <div style={{ width: "80vw", display: "flex", flexDirection: "column" }}>
+    <div className="overall-wrapper">
       <OverallGraph valueToShow="marketing_spend" />
       <OverallGraph valueToShow="new_customers" />
     </div>

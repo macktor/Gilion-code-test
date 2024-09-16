@@ -38,6 +38,10 @@ type DataContextType = {
   hideProjected: boolean;
   viewMode: NumericData;
   setViewMode: (viewMode: NumericData) => void;
+  monthlyCountries: string[];
+  setMonthlyCountries: (countries: string[]) => void;
+  monthToView: string;
+  setMonthToView: (month: string) => void;
 };
 
 const initialValues: DataContextType = {
@@ -50,6 +54,10 @@ const initialValues: DataContextType = {
   hideProjected: false,
   viewMode: "new_customers",
   setViewMode: (viewMode) => {},
+  monthlyCountries: [],
+  setMonthlyCountries: (countries) => {},
+  monthToView: "",
+  setMonthToView: (month) => {},
 };
 
 const DataContext = createContext(initialValues);
@@ -62,6 +70,8 @@ export const DataContextProvider = ({ children }: PropsWithChildren) => {
   const [dataByDate, setDataByDate] = useState<DataByDate>({});
   const [hideProjected, setHideProjected] = useState<boolean>(false);
   const [viewMode, setViewMode] = useState<NumericData>("new_customers");
+  const [monthlyCountries, setMonthlyCountries] = useState<string[]>([]);
+  const [monthToView, setMonthToView] = useState<string>("");
 
   useEffect(() => {
     axios
@@ -134,6 +144,10 @@ export const DataContextProvider = ({ children }: PropsWithChildren) => {
         dataByCountry,
         dataByDate,
         toggleProjected,
+        monthlyCountries,
+        setMonthlyCountries,
+        monthToView,
+        setMonthToView,
       }}
     >
       {children}

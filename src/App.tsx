@@ -1,42 +1,47 @@
+import { useState } from "react";
 import "./App.css";
 import CountryView from "./Components/CountryOverview";
-import HideProjected from "./Components/HideProjected";
-import { LineChartExample } from "./Components/LineChartExample";
 import MonthChart from "./Components/MonthOverview";
 import Overall from "./Components/Overall";
-import ToggleViewMode from "./Components/ToggleViewMode";
+
 import { DataContextProvider } from "./context/DataContext";
+import Topbar from "./Components/Topbar";
+import OptionsBar from "./Components/Topbar/OptionsBar";
 
 function App() {
+  const [page, setPage] = useState<"overview" | "countryView" | "monthlyView">(
+    "overview"
+  );
+  const [openMenu, setOpenMenu] = useState<boolean>(false);
+  const [optionsOpen, setOptionsOpen] = useState<boolean>(false);
+
+  const renderPage = () => {
+    switch (page) {
+      case "overview":
+        return <Overall />;
+      case "countryView":
+        return <CountryView />;
+      case "monthlyView":
+        return <MonthChart />;
+    }
+  };
+
   return (
     <div className="App">
       <DataContextProvider>
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            backgroundColor: "#020202",
-            borderBottom: "1px solid #666",
-            display: "flex",
-            justifyContent: "center",
-            gap: "8px",
-            padding: "12px",
-          }}
-        >
-          <HideProjected />
-          <ToggleViewMode />
-        </div>
-        <Overall />
-
-        <MonthChart date="2022-11-01" />
-        <MonthChart date="2022-11-01" />
-        <MonthChart date="2022-12-01" />
-
-        <CountryView countries={["SE", "NO"]} />
-
-        <CountryView countries={["GB", "DE", "AT"]} />
+        <Topbar
+          setOptionsOpen={setOptionsOpen}
+          setOpenMenu={setOpenMenu}
+          setPage={setPage}
+          page={page}
+          openMenu={openMenu}
+        />
+        <OptionsBar
+          setOptionsOpen={setOptionsOpen}
+          page={page}
+          optionsOpen={optionsOpen}
+        />
+        <main className="main">{renderPage()}</main>
       </DataContextProvider>
     </div>
   );

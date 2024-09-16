@@ -5,7 +5,7 @@
 
   color-scheme: light;
   color: rgb(22, 22, 22);
-  background-color: #030303;
+  background-color: #0a0a0a;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -25,12 +25,37 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
 pre {
   white-space: pre-wrap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.chart-wrapper {
+  min-height: 400px;
+  width: 100%;
+}
+
+ol,
+ul {
+  list-style: none;
+  padding: 0;
+}
+button {
+  -webkit-appearance: none;
+  border-radius: 0;
+  text-align: inherit;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  color: inherit;
+  font: inherit;
 }
