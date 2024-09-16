@@ -11,7 +11,7 @@ import {
 import { Line } from "react-chartjs-2";
 import { useDataContext } from "../../context/DataContext";
 import { cleanName, formatCountry } from "../../utils";
-import { Colors } from "../../constants";
+import { countryColors } from "../../constants";
 import { CountrySelector } from "../Topbar/OptionsBar";
 import "./CountryOverview.css";
 ChartJS.defaults.color = "white";
@@ -48,7 +48,7 @@ const CountryView = () => {
     datasets: relevantDataSets.map(([country, countryData], i) => ({
       label: formatCountry(country),
       data: countryData.data.map((dataPoint) => dataPoint[viewMode]),
-      borderColor: Colors[i],
+      borderColor: countryColors[country],
     })),
   };
 

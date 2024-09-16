@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import CountryView from "./Components/CountryOverview";
-import MonthChart from "./Components/MonthOverview";
+import MonthChart from "./Components/MonthlyOverview";
 import Overall from "./Components/Overall";
 
 import { DataContextProvider } from "./context/DataContext";

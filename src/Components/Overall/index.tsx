@@ -11,7 +11,7 @@ import { Bar } from "react-chartjs-2";
 
 import { NumericData, useDataContext } from "../../context/DataContext";
 import { useMemo } from "react";
-import { Colors } from "../../constants";
+import { countryColors } from "../../constants";
 import { cleanName, formatCountry } from "../../utils";
 import "./Overall.css";
 
@@ -41,7 +41,7 @@ const OverallGraph = ({ valueToShow }: { valueToShow: NumericData }) => {
         data: dataByCountry[country].data.map(
           (dataPoint) => dataPoint[valueToShow]
         ),
-        backgroundColor: Colors[i],
+        backgroundColor: countryColors[country],
       });
     });
     return datasets;

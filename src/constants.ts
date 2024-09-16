@@ -10,6 +10,14 @@ export const Colors = [
   "#8bd3c7",
 ];
 
+export const countryColors: { [country: string]: string } = {
+  SE: "#fd7f6f",
+  NO: "#7eb0d5",
+  DE: "#b2e061",
+  GB: "#bd7ebe",
+  AT: "#ffee65",
+};
+
 export const Months = [
   "January",
   "February",
